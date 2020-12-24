@@ -1,14 +1,14 @@
 class RecipesController < ApplicationController
 
     def index
-        render json: Recipe.all
+        render json: Recipe.all.map {|recipe| RecipeSerializer.new(recipe)}
     end
 
     
     def create
         recipe = Recipe.new(recipe_params)
         if recipe.save
-            render json: recipe
+            render json: RecipeSerializer.new(recipe)
         end
 
     end
