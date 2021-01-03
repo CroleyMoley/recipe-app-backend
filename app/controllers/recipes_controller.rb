@@ -14,8 +14,8 @@ class RecipesController < ApplicationController
     end
 
     def destroy 
-        recipe = Recipe.find(params(:id))
-        recipe.delete
+        recipe = Recipe.find(params[:id])
+        recipe.destroy
     end
 
     private 
