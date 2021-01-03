@@ -12,6 +12,7 @@ class IngredientsController < ApplicationController
     end
 
     def destroy
+        ingredient = Ingredient.find(params[:id])
         ingredient.destroy
     end
 
@@ -20,10 +21,10 @@ class IngredientsController < ApplicationController
     private
 
     def set_ingredient
-        ingredient = Ingredient.find(params[:id])
+        ingredient = Ingredient.find_by(id: params[:id])
     end
 
-    
+
     def ingredient_params
         params.require(:ingredient).permit(:name, :recipe_id)
     end
